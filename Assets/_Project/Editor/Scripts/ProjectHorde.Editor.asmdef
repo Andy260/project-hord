@@ -1,7 +1,9 @@
 {
     "name": "ProjectHorde.Editor",
     "rootNamespace": "ProjectHorde.Editor",
-    "references": [],
+    "references": [
+        "GUID:1ec3c8aab56c6024595e55149556b6f9"
+    ],
     "includePlatforms": [
         "Editor"
     ],

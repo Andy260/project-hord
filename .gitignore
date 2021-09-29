@@ -61,3 +61,20 @@ crashlytics-build.properties
 .vsconfig
 Assets/Unity.VisualScripting.Generated/
 Assets/Unity.VisualScripting.Generated.meta
+Assets/Stylized Grass Texture.meta
+Assets/Stylized Grass Texture/Materials.meta
+Assets/Stylized Grass Texture/Textures.meta
+Assets/Stylized Grass Texture/Materials/Stylize_Grass.mat
+Assets/Stylized Grass Texture/Materials/Stylize_Grass.mat.meta
+Assets/Stylized Grass Texture/Materials/Stylize_Grass_diffuse.mat
+Assets/Stylized Grass Texture/Materials/Stylize_Grass_diffuse.mat.meta
+Assets/Stylized Grass Texture/Textures/Vol_42_1_Ambient_Occlusion.png
+Assets/Stylized Grass Texture/Textures/Vol_42_1_Ambient_Occlusion.png.meta
+Assets/Stylized Grass Texture/Textures/Vol_42_1_Base_Color.png
+Assets/Stylized Grass Texture/Textures/Vol_42_1_Base_Color.png.meta
+Assets/Stylized Grass Texture/Textures/Vol_42_1_Height.png
+Assets/Stylized Grass Texture/Textures/Vol_42_1_Height.png.meta
+Assets/Stylized Grass Texture/Textures/Vol_42_1_Normal.png
+Assets/Stylized Grass Texture/Textures/Vol_42_1_Normal.png.meta
+Assets/Stylized Grass Texture/Textures/Vol_42_1_Roughness.png
+Assets/Stylized Grass Texture/Textures/Vol_42_1_Roughness.png.meta
