@@ -9,6 +9,7 @@ namespace ProjectHorde.Characters.Players
     [AddComponentMenu("Characters/Player Character Controller")]
     public class PlayerCharacterController : MonoBehaviour
     {
+        // Current movement direction being commanded by the player
         private Vector2 _movementDirection;
 
         // Dependency references
@@ -26,8 +27,14 @@ namespace ProjectHorde.Characters.Players
 
         private void OnEnable()
         {
-            // Listen to input events
-            _playerInput.onActionTriggered += OnActionTriggered;
+            // Listen to move action input events
+            InputAction movementAction = _playerInput.actions.FindAction("Movement");
+            movementAction.performed    += OnMove;
+            movementAction.canceled     += OnMove;
+
+            // Listen to look action input events
+            InputAction lookAction = _playerInput.actions.FindAction("Look");
+            lookAction.performed += OnLook;
         }
 
         private void Update()
@@ -41,21 +48,27 @@ namespace ProjectHorde.Characters.Players
 
         private void OnDisable()
         {
-            // Stop listening to input events
-            _playerInput.onActionTriggered -= OnActionTriggered;
+            // Stop listening to move action input events
+            InputAction movementAction = _playerInput.actions.FindAction("Movement");
+            movementAction.performed    -= OnMove;
+            movementAction.canceled     -= OnMove;
+
+            // Stop listen to look action input events
+            InputAction lookAction = _playerInput.actions.FindAction("Look");
+            lookAction.performed += OnLook;
         }
 
         #endregion
 
         #region Event Callbacks
 
-        private void OnActionTriggered(InputAction.CallbackContext context)
+        private void OnMove(InputAction.CallbackContext context)
         {
             switch (context.phase)
             {
-                case InputActionPhase.Canceled:
                 case InputActionPhase.Disabled:
                 case InputActionPhase.Waiting:
+                case InputActionPhase.Canceled:
                     // Player isn't commanding movement
                     _movementDirection = Vector2.zero;
                     break;
@@ -64,12 +77,21 @@ namespace ProjectHorde.Characters.Players
                 case InputActionPhase.Performed:
                     // Player is commanding movement
                     _movementDirection = context.ReadValue<Vector2>();
-
                     break;
 
                 default:
-                    throw new NotImplementedException();
+                    throw new NotImplementedException("InputActionPhase not implemented: " + context.phase.ToString());
             }
+        }
+
+        private void OnLook(InputAction.CallbackContext context)
+        {
+            // Calculate rotation
+            Vector2 lookCommand     = context.ReadValue<Vector2>();
+            float desiredDegrees    = Vector2.SignedAngle(Vector2.up, lookCommand);
+
+            // Rotate character
+            _movement.Rotate(desiredDegrees);
         }
 
         #endregion

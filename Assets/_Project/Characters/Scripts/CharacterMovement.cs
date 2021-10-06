@@ -87,7 +87,7 @@ namespace ProjectHorde
         /// <param name="angle">Degrees to rotate the character by</param>
         public void Rotate(float angle)
         {
-            transform.Rotate(Vector3.up, angle);
+            transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
         }
 
         #endregion
